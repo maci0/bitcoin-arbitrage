@@ -80,7 +80,7 @@ class PrivateCryptsyUSD(Market):
         params = {"method": "getinfo"}
         response = self._send_request(self.auth_api_url, params)
         if response:
-            #logging.debug("get_info:JSON=%s" % (json.dumps(response)))
+            logging.debug("get_info:JSON=%s" % (json.dumps(response)))
             if "success" in response:
                 if int(response["success"]) != 1:
                     raise GetInfoException(response["error"])

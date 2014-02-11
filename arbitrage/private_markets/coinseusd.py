@@ -11,6 +11,8 @@ import sys
 import json
 import config
 import requests
+import logging
+
 
 class PrivateCoinsEUSD(Market):
     placeorder_url = "https://www.coins-e.com/api/v2/market/"
@@ -72,7 +74,7 @@ class PrivateCoinsEUSD(Market):
         params = {"method": "getwallets"}        
         response = self._send_request(self.getfunds_url, params)
         if response:
-            print(json.dumps(response))
+            logging.debug("get_info:JSON=%s" % (json.dumps(response)))
             if response["message"] != "success":
                 raise GetInfoException(response["message"])
             funds = response["wallets"]
